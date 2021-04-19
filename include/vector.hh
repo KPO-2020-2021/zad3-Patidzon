@@ -2,6 +2,7 @@
 
 #include "size.hh"
 #include <iostream>
+#include <cmath>
 
 class Vector {
 
@@ -26,7 +27,7 @@ public:
     const double &operator [] (int index) const;
 
     double &operator [] (int index);
-
+    double dlugosc()const; 
 };
 
 std::ostream &operator << (std::ostream &out, Vector const &tmp);
@@ -173,7 +174,9 @@ double &Vector::operator[](int index) {
  */
 std::ostream &operator << (std::ostream &out, Vector const &tmp) {
     for (int i = 0; i < SIZE; ++i) {
-        out << "[ " << tmp[i] << " ]\n";
+       // out << "[ " << tmp[i] << " ]\n";
+       out<<tmp[i]<<" ";
+
     }
     return out;
 }
@@ -192,3 +195,15 @@ std::istream &operator >> (std::istream &in, Vector &tmp) {
     std::cout << std::endl;
     return in;
 }
+
+  double Vector::dlugosc()const{
+double tmp,wynik; 
+for (int i = 0; i < SIZE; ++i) {
+        tmp=pow(size[i],2)+tmp;
+    }
+
+
+wynik=sqrt(tmp);
+return wynik;
+
+  }

@@ -11,11 +11,12 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
-
+#include <cmath>
 #include "exampleConfig.h"
 #include "example.h"
 #include "vector.hh"
 #include "matrix.hh"
+#include "prostokat.h"
 #include "../include/lacze_do_gnuplota.hh"
 
 /*!
@@ -107,6 +108,30 @@ bool PrzykladZapisuWspolrzednychDoPliku( const char  *sNazwaPliku,
 }
 
 int main() {
+      // Prostokat era;
+       //era.wczytajwsp();
+
+
+     /* double kat;
+       Prostokat era;
+       
+       double arguments12V[] = {100.0, 100.0};
+       Vector wek=Vector(arguments12V);
+      std::cout <<wek;
+       era.wczytajwsp();
+       era<<std::cout;
+       kat=90;
+       Matrix macierz;
+       macierz.zaladuj(kat);
+      std::cout<<macierz;
+       
+    
+
+
+       
+      era.obliczboki(std::cout);
+*/
+
   std::cout << "Project Rotation 2D based on C++ Boiler Plate v"
             << PROJECT_VERSION_MAJOR /*duże zmiany, najczęściej brak kompatybilności wstecz */
             << "."
@@ -153,7 +178,19 @@ int main() {
    //  jako wspolrzedne punktow podajemy tylko x,y.
    //
   Lacze.ZmienTrybRys(PzG::TR_2D);
+  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+  std::cin.ignore(100000,'\n');
+     
 
+  
+  /*era.obroc(kat,1);
+ era<<std::cout;
+  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+    
+  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+  std::cin.ignore(100000,'\n');
+*/
   PrzykladZapisuWspolrzednychDoStrumienia(std::cout,0);
   if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat",0)) return 1;
   Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
@@ -173,4 +210,5 @@ int main() {
   // just to show that it is accessible from main.cpp.
   Dummy d = Dummy();
   return d.doSomething() ? 0 : -1;
+ 
 }

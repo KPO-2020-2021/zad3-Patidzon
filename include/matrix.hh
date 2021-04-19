@@ -4,6 +4,7 @@
 #include "vector.hh"
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 
 class Matrix {
 
@@ -14,10 +15,12 @@ public:
     Matrix(double [SIZE][SIZE]);            // Konstruktor klasy
 
     Matrix();                               // Konstruktor klasy
+    Matrix(double kat);
 
     Vector operator * (Vector tmp);           // Operator mnożenia przez wektor
 
     Matrix operator + (Matrix tmp);
+    void zaladuj(double kat);
 
     double  &operator () (unsigned int row, unsigned int column);
     
@@ -176,4 +179,17 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     }
     return out;
 }
+void Matrix::zaladuj(double kat){
+double radian;
+radian=2*M_PI*(kat/360);
+value[0][0]=cos(radian);
+value[0][1]=-sin(radian);
+value[1][0]=sin(radian);
+value[1][1]=cos(radian);
+}
+Matrix::Matrix(double kat){
 
+zaladuj(kat);
+
+
+}
