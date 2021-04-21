@@ -12,22 +12,28 @@
  */
 class Prostokat {
  
-  Vector wierzcholki[LICZBAPUNKTOW];
+  Vector wierzcholki[LICZBAPUNKTOW]; //tablica wektorow z wspolrzednymi wierzcholkow
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
    */
   public:
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
-   */  
-   void wczytajwsp ();
+   */ 
+  Prostokat();// konstruktor bez parametryczny 
+   void wczytajwsp ();//wczytaj wspolrzedne z pliku do tablicy
   void zapiszwsp ();
   void obroc(double kat,int liczbaobrt);
   void przesun(Vector wek);
   std::ostream& operator << ( std::ostream  &Strm)const;
   void obliczboki(std::ostream &strm);
+  bool operator == (Prostokat &Pr);
   
 };
+Prostokat::Prostokat(){
+wczytajwsp();
+
+}
  void Prostokat::wczytajwsp (){
    int i;
 std::fstream plik;
@@ -82,14 +88,30 @@ return Strm;
 }       
 void Prostokat::obliczboki(std::ostream  &Strm){
   int i;
- // Vector tmp;
+  double dlugosci[4];
+  //double wynik;
+  Vector tmp;
 for ( i = 0; i < LICZBAPUNKTOW; i++)
      {
-       //tmp=wierzcholki[i]-wierzcholki[i+1];
-       Strm<<"dlugosc boku "<<i+1<<" jest rowna"<<wierzcholki[i]-wierzcholki[i+1]<<std::endl;
+       tmp=wierzcholki[i]-wierzcholki[i+1];
+       dlugosci[i]=tmp.dlugosc();
+//wynik=wierzcholki.dlugosc(tmp)
+       Strm<<"dlugosc boku "<<i+1<<" jest rowna"<<dlugosci[i]<<std::endl;
        
      }
-}
+     
+     for ( i = 0; i < 2; i++)
+     {
+     if (std::abs(dlugosci[i]-dlugosci[i+2])<MINDIF)
+     {
+       Strm<<"boki "<<i+1<<" i "<<i+3<<" sa rowne"<<std::endl;
+     }
+     else
+     {
+       Strm<<"boki "<<i+1<<" i "<<i+3<<" rozne"<<std::endl;
+     }
+     
+}}
 void Prostokat::obroc(double kat,int liczbaobrt){
 Matrix macierz=Matrix(kat);
   int i,j=0;
@@ -128,5 +150,25 @@ for ( i = 0; i <= LICZBAPUNKTOW; i++)
 
   
      zapiszwsp();
+
+}
+
+
+
+bool Prostokat::operator == (Prostokat &Pr){
+int i;
+    Vector tmp;
+    double dlugosci[4];
+for ( i = 0; i < LICZBAPUNKTOW; i++)
+     {
+       tmp=wierzcholki[i]-Pr.wierzcholki[i];
+       dlugosci[i]=tmp.dlugosc();}
+if ((dlugosci[0] <= MINDIF) && ( dlugosci[1]<= MINDIF)&& ( dlugosci[2]<= MINDIF)&& ( dlugosci[3]<= MINDIF)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+
 
 }

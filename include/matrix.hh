@@ -179,6 +179,12 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     }
     return out;
 }
+/******************************************************************************
+ |  Funkcja macierzy                                                |
+ |  Argumenty:                                                                |
+ |      kat - double,                                             |
+ |      Wypelnia macierz wartosciami                                                      |
+ */
 void Matrix::zaladuj(double kat){
 double radian;
 radian=2*M_PI*(kat/360);
@@ -187,6 +193,12 @@ value[0][1]=-sin(radian);
 value[1][0]=sin(radian);
 value[1][1]=cos(radian);
 }
+/******************************************************************************
+ |  konstruktor parametryczny macierzy                                              |
+ |  Argumenty:                                                                |
+ |      kat - double,                                             |
+ |     Wywoluje funkce zaladuj dla wartosci argumentu                                                    |
+ */
 Matrix::Matrix(double kat){
 
 zaladuj(kat);

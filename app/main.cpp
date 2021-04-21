@@ -43,6 +43,7 @@
  * \retval true - gdy operacja zapisu powiodła się,
  * \retval false - w przypadku przeciwnym.
  */
+/*
 void PrzykladZapisuWspolrzednychDoStrumienia( std::ostream&     StrmWy, 
                                               double       Przesuniecie
                                             )
@@ -74,7 +75,7 @@ void PrzykladZapisuWspolrzednychDoStrumienia( std::ostream&     StrmWy,
                              // aby gnuplot narysowal zamkniętą linię.
 }
 
-
+*/
 
 /*!
  * Przyklad zapisu wspolrzednych zbioru punktow do pliku, z ktorego
@@ -88,7 +89,7 @@ void PrzykladZapisuWspolrzednychDoStrumienia( std::ostream&     StrmWy,
  * \retval true - gdy operacja zapisu powiodła się,
  * \retval false - w przypadku przeciwnym.
  */
-bool PrzykladZapisuWspolrzednychDoPliku( const char  *sNazwaPliku,
+/*bool PrzykladZapisuWspolrzednychDoPliku( const char  *sNazwaPliku,
                                          double       Przesuniecie
                                        )
 {
@@ -106,11 +107,19 @@ bool PrzykladZapisuWspolrzednychDoPliku( const char  *sNazwaPliku,
   StrmPlikowy.close();
   return !StrmPlikowy.fail();
 }
-
+*/
 int main() {
-      // Prostokat era;
-       //era.wczytajwsp();
+  int liczabobrt=0;
+  double kat=0;
+  char z;
+  
+    Prostokat era=Prostokat();
+Vector przesuniecie=Vector();
 
+     /* Prostokat era;
+       era.wczytajwsp();
+       era.obliczboki(std::cout);
+*/
 
      /* double kat;
        Prostokat era;
@@ -141,9 +150,19 @@ int main() {
             << "."
             << PROJECT_VERSION_TWEAK /* zmiany estetyczne itd. */
             << std::endl;
+
+
+
+
+
+
+
+
+
+
   // std::system("cat ../LICENSE");
   // do zadania Rotacja 2D
-  std::cout << "Vector:" << std::endl;
+  /*std::cout << "Vector:" << std::endl;
   Vector tmpV1 = Vector();
   std::cout << "Vector - konstruktor bezparametryczny:\n" << tmpV1 << std::endl;
   double argumentsV[] = {1.0, 2.0};
@@ -156,7 +175,7 @@ int main() {
   double argumentsM[][SIZE] = {{1.0, 2.0},{3.0, 4.0}};
   Matrix tmpM2 = Matrix(argumentsM);
   std::cout << "Matrix - konstruktor parametryczny:\n" << tmpM2 << std::endl;
-
+*/
     PzG::LaczeDoGNUPlota  Lacze;  // Ta zmienna jest potrzebna do wizualizacji
                                 // rysunku prostokata
 
@@ -178,19 +197,58 @@ int main() {
    //  jako wspolrzedne punktow podajemy tylko x,y.
    //
   Lacze.ZmienTrybRys(PzG::TR_2D);
-  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+/*  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-  std::cin.ignore(100000,'\n');
-     
+  std::cin.ignore(100000,'\n');*/
+               
+while (z!='k')
+{std::cout<<"o obroc o kat"<<std::endl
+<<"p przesun o podany wektor"<<std::endl
+<<"w wypisz wspolrzedne"<<std::endl
+<<"k koniec"<<std::endl;
+  std::cin>>z;
+  switch (z)
+  {
+  case 'o':
+era.wczytajwsp();
+    std::cout<<"podaj kat obrotu w stopniach i liczbe obrotow"<<std::endl;
+std::cin>>kat;
+std::cin>>liczabobrt;
+std::cout<<"kat obrotu to "<<kat<<" a liczba obrotow to "<<liczabobrt<<std::endl;
+era.obroc(kat,liczabobrt);
+Lacze.Rysuj();
+    break;
+    case 'p':
+era.wczytajwsp();
+    std::cout<<"podaj wektor przesuniecia"<<std::endl;
+std::cin>>przesuniecie;
 
+std::cout<<"wektor przesuniecia to "<<przesuniecie<<std::endl;
+era.przesun(przesuniecie);
+Lacze.Rysuj();
+    break;
+    case 'w':
+era.wczytajwsp();
+std::cout<<"wspolrzedne to"<<std::endl;
+ era<<std::cout;
+ std::cout<<std::endl;
+ era.obliczboki(std::cout);
+ std::cout<<std::endl;
+    break;
   
-  /*era.obroc(kat,1);
+  default:
+    break;
+  }
+}
+return 0;
+  /*
+  era.obroc(kat,1);
  era<<std::cout;
   Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
     
   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
   std::cin.ignore(100000,'\n');
-*/
+
   PrzykladZapisuWspolrzednychDoStrumienia(std::cout,0);
   if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat",0)) return 1;
   Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
@@ -204,11 +262,11 @@ int main() {
   Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
   std::cin.ignore(100000,'\n');
-
+*/
   // Z bazy projektu-wydmuszki Boiler Plate C++:
   // Bring in the dummy class from the example source,
   // just to show that it is accessible from main.cpp.
-  Dummy d = Dummy();
-  return d.doSomething() ? 0 : -1;
+ // Dummy d = Dummy();
+ // return d.doSomething() ? 0 : -1;
  
 }

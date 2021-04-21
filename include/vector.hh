@@ -23,6 +23,7 @@ public:
     Vector operator * (const double &tmp);
 
     Vector operator / (const double &tmp);
+    bool operator == (Vector tmp)const;
 
     const double &operator [] (int index) const;
 
@@ -175,7 +176,7 @@ double &Vector::operator[](int index) {
 std::ostream &operator << (std::ostream &out, Vector const &tmp) {
     for (int i = 0; i < SIZE; ++i) {
        // out << "[ " << tmp[i] << " ]\n";
-       out<<tmp[i]<<" ";
+       out<< std::setprecision(10)<<tmp[i]<< std::fixed<<" ";
 
     }
     return out;
@@ -190,12 +191,19 @@ std::ostream &operator << (std::ostream &out, Vector const &tmp) {
  */
 std::istream &operator >> (std::istream &in, Vector &tmp) {
     for (int i = 0; i < SIZE; ++i) {
-        in >> tmp[i];
+        in >>std::setprecision(10)>>tmp[i]>>std::fixed;
     }
     std::cout << std::endl;
     return in;
 }
 
+/******************************************************************************
+ |  Funkcja Wektora                                                |
+ |  Argumenty:                                                                |
+ |      this- wektor. 
+ | Zwraca:
+ |      wynik-długosc wektora                                                  |
+ */
   double Vector::dlugosc()const{
 double tmp,wynik; 
 for (int i = 0; i < SIZE; ++i) {
@@ -206,4 +214,21 @@ for (int i = 0; i < SIZE; ++i) {
 wynik=sqrt(tmp);
 return wynik;
 
+  }
+
+
+
+
+  /******************************************************************************
+ |  Przeciazenie operatora ==                                                 |
+ |  Argumenty:                                                                |
+ |      tmp - wektor.                                                         |
+ */
+  bool Vector::operator == (Vector tmp)const{
+if ((std::abs(size[0]- tmp.size[0]) <= MINDIF) && (std::abs(size[1]- tmp.size[1]) <= MINDIF)){
+    return true;
+  }
+  else {
+    return false;
+  }
   }
