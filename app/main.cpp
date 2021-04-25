@@ -237,6 +237,7 @@ std::cout<<"wspolrzedne to"<<std::endl;
     break;
   
   default:
+  std::cout<<"nie poprawna opcja"<<std::endl;
     break;
   }
 }

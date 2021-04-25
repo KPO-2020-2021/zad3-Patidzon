@@ -30,10 +30,26 @@ class Prostokat {
   bool operator == (Prostokat &Pr);//operator porownania prostokatow
   
 };
+
+/******************************************************************************
+ |  Konstruktor klasy Prostokat.                                                 |
+ |  Argumenty:                                                                |
+ |      Brak argumentow.                                                      |
+ |  Zwraca:                                                                   |
+ |      Macierz wypelnione wartosciami z pliku .                                       |
+ */
 Prostokat::Prostokat(){
 wczytajwsp();
 
 }
+
+/******************************************************************************
+ |  Metoda klasy Prostokat.                                                 |
+ |  Argumenty:                                                                |
+ |      Brak argumentow.                                                      |
+ |  Zwraca:                                                                   |
+ |      Macierz wypelnione wartosciami z pliku .                                       |
+ */
  void Prostokat::wczytajwsp (){
    int i;
 std::fstream plik;
@@ -53,6 +69,14 @@ else {
   exit(0);}
 plik.close();
 }
+
+
+/******************************************************************************
+ |  Metoda klasy Prostokat.                                                 |
+ |  Argumenty:                                                                |
+ |      Brak argumentow.                                                      |
+ |      zapisuje do pliku wartosci z macierzy .                                       |
+ */
 void Prostokat::zapiszwsp (){
 
 int i;
@@ -71,6 +95,13 @@ for ( i = 0; i <= LICZBAPUNKTOW; i++)
 }
 plik.close();
   }
+
+
+  /******************************************************************************
+ |  Przeciazenie operatora <<                                                 |
+ |  Argumenty:                                                                |
+ |      out - strumien wejsciowy,                                             |
+ */
 std::ostream& Prostokat::operator << ( std::ostream  &Strm)const
 {
   int i;
@@ -85,17 +116,24 @@ for ( i = 0; i <= LICZBAPUNKTOW; i++)
 return Strm;
 
 
-}       
+}    
+
+/******************************************************************************
+ |  Metoda klasy Prostokat.                                                 |
+ |  Argumenty:                                                                |
+ |      Brak argumentow.                                                      |
+ |      zapisuje do pliku wartosci z macierzy .                                       |
+ */
 void Prostokat::obliczboki(std::ostream  &Strm){
   int i;
   double dlugosci[4];
-  //double wynik;
+
   Vector tmp;
 for ( i = 0; i < LICZBAPUNKTOW; i++)
      {
        tmp=wierzcholki[i]-wierzcholki[i+1];
        dlugosci[i]=tmp.dlugosc();
-//wynik=wierzcholki.dlugosc(tmp)
+
        Strm<<"dlugosc boku "<<i+1<<" jest rowna"<<dlugosci[i]<<std::endl;
        
      }
@@ -108,10 +146,18 @@ for ( i = 0; i < LICZBAPUNKTOW; i++)
      }
      else
      {
-       Strm<<"boki "<<i+1<<" i "<<i+3<<" rozne"<<std::endl;
+       Strm<<"boki "<<i+1<<" i "<<i+3<<" sa rozne"<<std::endl;
      }
      
 }}
+
+/******************************************************************************
+ |  Metoda klasy Prostokat.                                                 |
+ |  Argumenty:                                                                |
+ |     kat-kat o ktory wykona sie obrot(w stopniach)      |
+  | liczbaobrt-liczba obrotow                                             |
+ |      Obraca prostokat o kat.                                       |
+ */
 void Prostokat::obroc(double kat,int liczbaobrt){
 Matrix macierz=Matrix(kat);
   int i,j=0;
@@ -133,6 +179,16 @@ j++;
      zapiszwsp();
 
 }
+
+
+
+
+/******************************************************************************
+ |  Metoda klasy Prostokat.                                                 |
+ |  Argumenty:                                                                |
+ |     wek-wektor przesuniecia     |
+ |      przesuwa prostokat o kat.                                       |
+ */
 void Prostokat::przesun(Vector wek){
 
   int i;
@@ -152,9 +208,11 @@ for ( i = 0; i <= LICZBAPUNKTOW; i++)
      zapiszwsp();
 
 }
-
-
-
+  /******************************************************************************
+ |  Przeciazenie operatora ==                                                 |
+ |  Argumenty:                                                                |
+ |      Pr - prostokat.                                                         |
+ */
 bool Prostokat::operator == (Prostokat &Pr){
 int i;
     Vector tmp;

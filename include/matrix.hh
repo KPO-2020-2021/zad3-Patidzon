@@ -182,7 +182,7 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     return out;
 }
 /******************************************************************************
- |  Funkcja macierzy                                                |
+ | Metoda macierzy                                                |
  |  Argumenty:                                                                |
  |      kat - double,                                             |
  |      Wypelnia macierz wartosciami                                                      |
@@ -208,7 +208,7 @@ zaladuj(kat);
 
 }
 /******************************************************************************
- |  Funkcaj macierzy                                                |
+ |   Metoda macierzy                                                |
  |      Zwraca:                                          |
  |      suma-wyznacznik macierzy                                                        |
  */
@@ -277,7 +277,11 @@ Matrix Matrix::operator * (Matrix tmp) {
 }
 
 
-
+  /******************************************************************************
+ |  Przeciazenie operatora ==                                                 |
+ |  Argumenty:                                                                |
+ |      tmp - macierz.                                                         |
+ */
     bool Matrix::operator == (Matrix tmp){
  for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {

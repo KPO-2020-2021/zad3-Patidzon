@@ -198,7 +198,7 @@ std::istream &operator >> (std::istream &in, Vector &tmp) {
 }
 
 /******************************************************************************
- |  Funkcja Wektora                                                |
+ |  Metoda Wektora                                                |
  |  Argumenty:                                                                |
  |      this- wektor. 
  | Zwraca:
