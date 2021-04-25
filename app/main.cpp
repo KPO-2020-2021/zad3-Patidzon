@@ -110,7 +110,7 @@ void PrzykladZapisuWspolrzednychDoStrumienia( std::ostream&     StrmWy,
 */
 int main() {
   int liczabobrt=0;
-  double kat=0;
+  double kat=0,wynik;
   char z;
   
     Prostokat era=Prostokat();
@@ -240,6 +240,30 @@ std::cout<<"wspolrzedne to"<<std::endl;
     break;
   }
 }
+Matrix wynik1;
+  double argumentsM[][SIZE] = {{6.0, 4.0},{5.0, 1.0}};
+  double argumentsM2[][SIZE] = {{1.0, 4.0},{5.0, 1.0}};
+  double argumentsM3[][SIZE] = {{26.0, 28.0},{10.0, 21.0}};
+  Matrix tmpM2 = Matrix(argumentsM);
+   Matrix tmpM22 = Matrix(argumentsM2);
+   Matrix tmpM23 = Matrix(argumentsM3);
+  wynik=tmpM2(1,1);
+  wynik=tmpM2.wyznacznik();
+  wynik1=tmpM2*tmpM22;
+  std::cout<<"wyznacznik macierzy "<<std::endl <<tmpM2 <<std::endl<<"to "<<wynik<<std::endl;
+  std::cout<<"wynik mnozenia macierzy"<<std::endl<<tmpM2<<"przez macierz"<<std::endl<<tmpM22<<std::endl<<"wynosi "<<std::endl<<wynik1<<std::endl;
+
+std::cout<<"Test operatora porownania"<<std::endl<<"macierze"<<std::endl<<wynik1<<std::endl<<tmpM23<<std::endl<<"sa";
+  if (wynik1==tmpM23)
+  {
+    std::cout<<" rowne "<<std::endl;
+  }
+  else
+  {
+    std::cout<<" rozne "<<std::endl;
+  }
+  
+  
 return 0;
   /*
   era.obroc(kat,1);

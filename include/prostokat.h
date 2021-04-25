@@ -20,14 +20,14 @@ class Prostokat {
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
    */ 
-  Prostokat();// konstruktor bez parametryczny 
+  Prostokat();// konstruktor bez parametryczny pobiera wspolrzedne z pliku
    void wczytajwsp ();//wczytaj wspolrzedne z pliku do tablicy
-  void zapiszwsp ();
-  void obroc(double kat,int liczbaobrt);
-  void przesun(Vector wek);
-  std::ostream& operator << ( std::ostream  &Strm)const;
-  void obliczboki(std::ostream &strm);
-  bool operator == (Prostokat &Pr);
+  void zapiszwsp ();// zapisuje wspolrzedne z tablicy do pliku
+  void obroc(double kat,int liczbaobrt);// obraca prostokat n-razy o dany kat
+  void przesun(Vector wek);// przesuwa prostokat o dany wektor
+  std::ostream& operator << ( std::ostream  &Strm)const;//wypisuje wspolrzedne prostokata na podane wyjscie
+  void obliczboki(std::ostream &strm);//oblicza dlugosci bokow i porownuje ich dlugosci
+  bool operator == (Prostokat &Pr);//operator porownania prostokatow
   
 };
 Prostokat::Prostokat(){

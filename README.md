@@ -23,3 +23,9 @@ W przypadku wpisania w terminalu make test wykonywane są testy, ale pokazuje ja
 
 Nie mialem czasu napisac testu dla prostokata( napisalem tylko operator porownania dla niego) ale jego metody dzialaja poprawnie ( sprawdzilem recznie)
 
+ W zwiazku z wyjazdem na mistrzostwa Polski w curlingu w dniach 26-28( powrot w okolicach polnocy) oraz wyjazdem na nie dnia 25 o godz 18:00 nie bylem wstanie poprawic brakow opisanych w poprzednich punktach.
+
+Dział
+
+ Dodatkowo w tym zadaniu umieszczam przygotowanie na tydzien 0 zadania obroty figur 3D(operator porownania macierzy i mnozenia macierzy przez macierz jako metody klasy Matrix dzialanie zaprezentowanie w maine) Będe mogl je dopiero umiescic w repozytorium po powrocie. 
+

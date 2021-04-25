@@ -18,13 +18,15 @@ public:
     Matrix(double kat);
 
     Vector operator * (Vector tmp);           // Operator mnożenia przez wektor
+    Matrix operator * (Matrix tmp);           // Operator mnożenia przez macierz
 
     Matrix operator + (Matrix tmp);
     void zaladuj(double kat);
-
+    bool operator == (Matrix tmp);
     double  &operator () (unsigned int row, unsigned int column);
     
     const double &operator () (unsigned int row, unsigned int column) const;
+    double wyznacznik()const;
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);
@@ -205,3 +207,92 @@ zaladuj(kat);
 
 
 }
+/******************************************************************************
+ |  Funkcaj macierzy                                                |
+ |      Zwraca:                                          |
+ |      suma-wyznacznik macierzy                                                        |
+ */
+    double Matrix::wyznacznik()const{
+ double a[SIZE][SIZE], ratio,suma=1;
+	 int i,j,k;
+for(i=0;i<=SIZE-1;i++)
+	 {
+		  for(j=0;j<=SIZE-1;j++)
+		  {
+			  
+			   a[i][j]=value[i][j];
+               
+		  }
+	 }
+for(i=0;i<=SIZE-1;i++)
+	 {
+		  if(a[i][i] == 0.0)
+		  {
+			   std::cout<<"Mathematical Error!";
+			   exit(0);
+		  }
+		  for(j=i+1;j<=SIZE-1;j++)
+		  {
+			   ratio = a[j][i]/a[i][i];
+
+			   for(k=0;k<=SIZE-1;k++)
+			   {
+			  		a[j][k] = a[j][k] - ratio*a[i][k];
+                      
+			   }
+		  }
+	 }
+for(i=0;i<=SIZE-1;i++)
+	 {
+		 
+			   
+			  suma=a[i][i]*suma;
+		  
+	 }
+return suma;
+    }
+    /******************************************************************************
+ |  Realizuje mnozenie macierzy przez wektor.                                 |
+ |  Argumenty:                                                                |
+ |      this - macierz, czyli pierwszy skladnik mnozenia,                     |
+ |      v - wektor, czyli drugi skladnik mnozenia.                            |
+ |  Zwraca:                                                                   |
+ |      Iloczyn dwoch skladnikow przekazanych jako wektor.                    |
+ */
+
+Matrix Matrix::operator * (Matrix tmp) {
+    Matrix result;
+    double tmp1=0;
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            tmp1=0;
+            for (int k = 0; k < SIZE; ++k) {
+            tmp1 += value[i][k] * tmp(k,j);
+            
+            result(i,j)=tmp1;}
+          
+        }
+    }
+    return result;
+}
+
+
+
+    bool Matrix::operator == (Matrix tmp){
+ for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+        
+        
+        if(std::abs(value[i][j]- tmp.value[i][j]) >= MINDIF)
+        
+  
+  {
+    return false;
+  }
+                                        }
+                               }
+
+
+
+return true;
+    }
